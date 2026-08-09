@@ -4,91 +4,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Alataa USDT</title>
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
 body{
-background:#114c42;
-color:#fff;
+  background:#114c42;
+  color:#fff;
 }
 
 .hero{
-padding:70px 20px 40px;
-text-align:center;
+  padding:55px 20px 30px;
+  text-align:center;
 }
 
 .hero h1{
-font-size:42px;
-margin-bottom:15px;
+  font-size:42px;
+  margin-bottom:15px;
 }
 
 .hero p{
-font-size:20px;
-opacity:.9;
+  font-size:20px;
+  opacity:.9;
 }
 
 .container{
-max-width:700px;
-margin:auto;
-padding:20px;
+  max-width:700px;
+  margin:auto;
+  padding:20px;
 }
 
 .card{
-background:#fff;
-color:#111;
-border-radius:28px;
-padding:35px;
-margin-bottom:25px;
-text-decoration:none;
-display:block;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
+  background:#fff;
+  color:#111;
+  border-radius:28px;
+  padding:30px;
+  margin-bottom:25px;
+  display:block;
+  box-shadow:0 5px 18px rgba(0,0,0,.12);
 }
 
 .card.dark{
-background:#0d5c4e;
-color:#fff;
+  background:#0d5c4e;
+  color:#fff;
+}
+
+.home-card{
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.home-card:hover{
+  transform:translateY(-3px);
 }
 
 .card h2{
-font-size:42px;
-margin-bottom:15px;
+  font-size:34px;
+  margin-bottom:15px;
 }
 
 .card p{
-font-size:20px;
-line-height:1.8;
+  font-size:19px;
+  line-height:1.8;
+  margin-bottom:18px;
 }
 
 .icon{
-font-size:45px;
-float:left;
+  font-size:42px;
+  float:left;
 }
 
-.footer{
-text-align:center;
-padding:40px;
-color:#ddd;
-font-size:15px;
+label{
+  display:block;
+  font-size:18px;
+  margin:15px 0 7px;
 }
-.card[id]{
+
+input,
+select{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #aaa;
+  font-size:17px;
+  margin-bottom:10px;
+  background:#fff;
+  color:#111;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:13px 18px;
+  margin:7px 3px;
+  font-size:16px;
+  cursor:pointer;
+  background:#0d5c4e;
+  color:#fff;
+}
+
+.card.dark button{
+  background:#fff;
+  color:#0d5c4e;
+}
+
+button:hover{
+  opacity:.85;
+}
+
+.payment-box,
+.receive-box,
+.result-box{
+  background:#f3f3f3;
+  color:#111;
+  border-radius:15px;
+  padding:18px;
+  margin:15px 0;
+  line-height:1.8;
+}
+
+.card.dark .payment-box,
+.card.dark .receive-box,
+.card.dark .result-box{
+  background:#fff;
+  color:#111;
+}
+
+.copy-btn{
+  background:#114c42 !important;
+  color:#fff !important;
+}
+
+.whatsapp-btn{
+  background:#128c7e !important;
+  color:#fff !important;
+  width:100%;
+  font-size:18px;
+  margin-top:15px;
+}
+
+.hidden{
   display:none;
 }
 
-.card[id]:target{
-  display:block;
+.address{
+  background:#eee;
+  color:#111;
+  padding:12px;
+  border-radius:8px;
+  word-break:break-all;
+  direction:ltr;
+  text-align:left;
+  margin:8px 0;
 }
+
+.card.dark .address{
+  background:#eee;
+  color:#111;
+}
+
+.footer{
+  text-align:center;
+  padding:40px;
+  color:#ddd;
+  font-size:15px;
+}
+
+.back-btn{
+  background:#777 !important;
+  color:#fff !important;
+}
+
+.price-info{
+  background:rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:15px;
+  margin:15px 0;
+  line-height:1.8;
+}
+
 </style>
 
 </head>
@@ -97,59 +200,917 @@ font-size:15px;
 
 <section class="hero">
 
-<h1>Alataa USDT</h1>
+  <h1>Alataa USDT</h1>
 
-<p>تبادل سريع وآمن للعملات الرقمية</p>
+  <p>تبادل سريع وآمن للعملات الرقمية</p>
 
 </section>
 
+
 <div class="container">
 
-  <a href="#sell" class="card">
-  <div class="icon">💵</div>
-  <h2>بيع USDT</h2>
-  <p>أرسل USDT واستلم المبلغ المقابل مباشرة.</p>
-</a>
+  <!-- الصفحة الرئيسية -->
 
-<a href="#buy" class="card dark">
-  <div class="icon">🛒</div>
-  <h2>شراء USDT</h2>
-  <p>ادفع واستلم USDT في محفظتك خلال دقائق.</p>
-  </a>
+  <div id="home">
+
+    <div
+      class="card home-card"
+      onclick="showPage('sellPage')"
+    >
+
+      <div class="icon">💵</div>
+
+      <h2>بيع USDT</h2>
+
+      <p>
+        أرسل USDT واستلم المبلغ المقابل مباشرة.
+      </p>
+
+    </div>
+
+
+    <div
+      class="card dark home-card"
+      onclick="showPage('buyPage')"
+    >
+
+      <div class="icon">🛒</div>
+
+      <h2>شراء USDT</h2>
+
+      <p>
+        ادفع واستلم USDT في محفظتك خلال دقيقة.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- صفحة شراء USDT -->
+  <!-- ========================= -->
+
+  <div
+    id="buyPage"
+    class="card dark hidden"
+  >
+
+    <h2>🛒 شراء USDT</h2>
+
+    <p>
+      مكتب العطاء للحوالات المالية والمصرفية
+      <br>
+      ادفع واستلم USDT خلال دقيقة.
+    </p>
+
+
+    <div class="price-info">
+
+      <strong>سعر الشراء</strong>
+
+      <br>
+
+      كل 100 دولار = 100 USDT
+
+      <br>
+
+      أو ما يعادل قيمة الدولار بالشيكل حسب سعر البنك.
+
+    </div>
+
+
+    <label>
+      كمية USDT التي ترغب في شرائها
+    </label>
+
+    <input
+      type="number"
+      id="buyAmount"
+      placeholder="مثال: 100"
+      min="1"
+      oninput="calculateBuy()"
+    >
+
+
+    <div
+      id="buyPrice"
+      class="result-box hidden"
+    ></div>
+
+
+    <label>
+      طريقة الدفع التي ترغب بالدفع من خلالها
+    </label>
+
+
+    <button
+      type="button"
+      onclick="showPayment('jawwal')"
+    >
+      📱 جوال باي
+    </button>
+
+
+    <button
+      type="button"
+      onclick="showPayment('palpay')"
+    >
+      💳 بال باي
+    </button>
+
+
+    <button
+      type="button"
+      onclick="showPayment('bank')"
+    >
+      🏦 بنك فلسطين
+    </button>
+
+
+    <div
+      id="paymentInfo"
+      class="payment-box hidden"
+    ></div>
+
+
+    <label>
+      عنوان محفظتك لاستلام USDT
+    </label>
+
+
+    <label>
+      TRC20
+    </label>
+
+    <input
+      type="text"
+      id="buyTRC20"
+      placeholder="T..."
+    >
+
+
+    <label>
+      BEP20
+    </label>
+
+    <input
+      type="text"
+      id="buyBEP20"
+      placeholder="0x..."
+    >
+
+
+    <button
+      type="button"
+      class="copy-btn"
+      onclick="copyField('buyTRC20')"
+    >
+      📋 نسخ عنوان TRC20
+    </button>
+
+
+    <button
+      type="button"
+      class="copy-btn"
+      onclick="copyField('buyBEP20')"
+    >
+      📋 نسخ عنوان BEP20
+    </button>
+
+
+    <p>
+      بعد إتمام الدفع اضغط على الزر لإرسال إشعار الدفع.
+    </p>
+
+
+    <button
+      type="button"
+      class="whatsapp-btn"
+      onclick="sendBuyOrder()"
+    >
+      📩 إرسال إشعار الدفع وإكمال الطلب عبر واتساب
+    </button>
+
+
+    <button
+      type="button"
+      class="back-btn"
+      onclick="showPage('home')"
+    >
+      ← رجوع
+    </button>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- صفحة بيع USDT -->
+  <!-- ========================= -->
+
+  <div
+    id="sellPage"
+    class="card hidden"
+  >
+
+    <h2>💵 بيع USDT</h2>
+
+    <p>
+      أرسل USDT واستلم المبلغ المقابل مباشرة.
+    </p>
+
+
+    <div class="price-info">
+
+      <strong>سعر البيع</strong>
+
+      <br>
+
+      كل 100 USDT = 95 دولار
+
+      <br>
+
+      أو ما يعادلها بالشيكل حسب سعر الشاشة.
+
+    </div>
+
+
+    <label>
+      كمية USDT التي تريد بيعها
+    </label>
+
+    <input
+      type="number"
+      id="sellAmount"
+      placeholder="مثال: 100"
+      min="1"
+      oninput="calculateSell()"
+    >
+
+
+    <div
+      id="sellPrice"
+      class="result-box hidden"
+    ></div>
+
+
+    <p>
+      رمز TRC20 الخاص بنا:
+    </p>
+
+
+    <div class="address">
+      TJTpjj3dMB5ffZmuJvpazMAnRvitRppVeD
+    </div>
+
+
+    <button
+      type="button"
+      class="copy-btn"
+      onclick="copyText('TJTpjj3dMB5ffZmuJvpazMAnRvitRppVeD')"
+    >
+      📋 نسخ عنوان TRC20
+    </button>
+
+
+    <p>
+      رمز BEP20 الخاص بنا:
+    </p>
+
+
+    <div class="address">
+      0x64050d75c408be9705ac34386b3e9958c5d4161c
+    </div>
+
+
+    <button
+      type="button"
+      class="copy-btn"
+      onclick="copyText('0x64050d75c408be9705ac34386b3e9958c5d4161c')"
+    >
+      📋 نسخ عنوان BEP20
+    </button>
+
+
+    <hr style="margin:25px 0;">
+
+
+    <p>
+      طريقة الاستلام التي ترغب باستلام المبلغ من خلالها:
+    </p>
+
+
+    <button
+      type="button"
+      onclick="selectReceive('jawwal')"
+    >
+      📱 جوال باي
+    </button>
+
+
+    <button
+      type="button"
+      onclick="selectReceive('palpay')"
+    >
+      💳 بال باي
+    </button>
+
+
+    <button
+      type="button"
+      onclick="selectReceive('bank')"
+    >
+      🏦 بنك فلسطين
+    </button>
+
+
+    <div
+      id="receiveForm"
+      class="receive-box hidden"
+    >
+
+      <p id="receiveTitle"></p>
+
+
+      <label>
+        اسم صاحب الحساب
+      </label>
+
+      <input
+        type="text"
+        id="receiveName"
+        placeholder="اسم صاحب الحساب"
+      >
+
+
+      <label>
+        رقم الحساب / المحفظة
+      </label>
+
+      <input
+        type="text"
+        id="receiveNumber"
+        placeholder="رقم الحساب أو المحفظة"
+      >
+
+    </div>
+
+
+    <button
+      type="button"
+      class="whatsapp-btn"
+      onclick="sendSellOrder()"
+    >
+      📩 إرسال إشعار التحويل وإكمال الطلب عبر واتساب
+    </button>
+
+
+    <button
+      type="button"
+      class="back-btn"
+      onclick="showPage('home')"
+    >
+      ← رجوع
+    </button>
+
+  </div>
 
 </div>
 
-<div id="sell" class="card">
-  <h2>بيع USDT</h2>
-  <p>حدد الكمية وأدخل بيانات الحساب الذي تريد استلام المبلغ عليه.</p>
 
-  <label>كمية USDT</label>
-  <input type="number" placeholder="مثال: 100">
-
-  <label>معلومات الاستقبال</label>
-  <input type="text" placeholder="رقم المحفظة أو الحساب">
-
-  <button>مراجعة عملية البيع</button>
-</div>
-
-<div id="buy" class="card dark">
-  <h2>شراء USDT</h2>
-  <p>حدد الكمية وأدخل عنوان محفظة TRC20 الذي تريد الاستلام عليه.</p>
-
-  <label>كمية USDT</label>
-  <input type="number" placeholder="مثال: 100">
-
-  <label>عنوان محفظة TRC20</label>
-  <input type="text" placeholder="T...">
-
-  <button>مراجعة عملية الشراء</button>
-</div>
 <div class="footer">
-
-© 2026 Alataa USDT
-
+  © 2026 Alataa USDT
 </div>
+
+
+<script>
+
+/* رقم واتساب الخاص بك */
+
+const whatsappNumber = "970595407866";
+
+
+/* طريقة الدفع المختارة */
+
+let selectedPayment = "";
+
+
+/* طريقة الاستلام المختارة */
+
+let selectedReceive = "";
+
+
+/* ========================= */
+/* التنقل بين الصفحات */
+/* ========================= */
+
+function showPage(page){
+
+  document.getElementById("home").classList.add("hidden");
+
+  document.getElementById("buyPage").classList.add("hidden");
+
+  document.getElementById("sellPage").classList.add("hidden");
+
+
+  document
+    .getElementById(page)
+    .classList.remove("hidden");
+
+}
+
+
+/* ========================= */
+/* حساب سعر شراء USDT */
+/* ========================= */
+
+function calculateBuy(){
+
+  const amount =
+    Number(document.getElementById("buyAmount").value) || 0;
+
+
+  const box =
+    document.getElementById("buyPrice");
+
+
+  if(amount <= 0){
+
+    box.classList.add("hidden");
+
+    return;
+
+  }
+
+
+  box.classList.remove("hidden");
+
+
+  box.innerHTML =
+    "المبلغ المطلوب تقريبًا: <strong>" +
+    amount.toFixed(2) +
+    " دولار</strong><br>" +
+    "أو ما يعادله بالشيكل حسب سعر البنك.";
+}
+
+
+/* ========================= */
+/* حساب سعر البيع */
+/* ========================= */
+
+function calculateSell(){
+
+  const amount =
+    Number(document.getElementById("sellAmount").value) || 0;
+
+
+  const box =
+    document.getElementById("sellPrice");
+
+
+  if(amount <= 0){
+
+    box.classList.add("hidden");
+
+    return;
+
+  }
+
+
+  const result = amount * 0.95;
+
+
+  box.classList.remove("hidden");
+
+
+  box.innerHTML =
+    "المبلغ المستحق: <strong>" +
+    result.toFixed(2) +
+    " دولار</strong><br>" +
+    "أو ما يعادلها بالشيكل حسب سعر الشاشة.";
+}
+
+
+/* ========================= */
+/* إظهار بيانات الدفع */
+/* ========================= */
+
+function showPayment(type){
+
+  selectedPayment = type;
+
+
+  const box =
+    document.getElementById("paymentInfo");
+
+
+  box.classList.remove("hidden");
+
+
+  if(type === "jawwal"){
+
+    box.innerHTML =
+
+      "📱 <strong>جوال باي</strong><br><br>" +
+
+      "رقم التحويل: " +
+
+      "<strong>0595407866</strong><br><br>" +
+
+      "<button type='button' class='copy-btn' " +
+
+      "onclick=\"copyText('0595407866')\">" +
+
+      "📋 نسخ الرقم" +
+
+      "</button>";
+
+  }
+
+
+  if(type === "palpay"){
+
+    box.innerHTML =
+
+      "💳 <strong>بال باي</strong><br><br>" +
+
+      "رقم المحفظة: " +
+
+      "<strong>0595407866</strong><br><br>" +
+
+      "<button type='button' class='copy-btn' " +
+
+      "onclick=\"copyText('0595407866')\">" +
+
+      "📋 نسخ الرقم" +
+
+      "</button>";
+
+  }
+
+
+  if(type === "bank"){
+
+    box.innerHTML =
+
+      "🏦 <strong>بنك فلسطين</strong><br><br>" +
+
+      "رقم التحويل: " +
+
+      "<strong>2057970</strong><br><br>" +
+
+      "<button type='button' class='copy-btn' " +
+
+      "onclick=\"copyText('2057970')\">" +
+
+      "📋 نسخ الرقم" +
+
+      "</button>";
+
+  }
+
+}
+
+
+/* ========================= */
+/* اختيار طريقة الاستلام */
+/* ========================= */
+
+function selectReceive(type){
+
+  selectedReceive = type;
+
+
+  const form =
+    document.getElementById("receiveForm");
+
+
+  const title =
+    document.getElementById("receiveTitle");
+
+
+  form.classList.remove("hidden");
+
+
+  if(type === "jawwal"){
+
+    title.innerHTML =
+      "📱 <strong>جوال باي</strong>";
+
+  }
+
+
+  if(type === "palpay"){
+
+    title.innerHTML =
+      "💳 <strong>بال باي</strong>";
+
+  }
+
+
+  if(type === "bank"){
+
+    title.innerHTML =
+      "🏦 <strong>بنك فلسطين</strong>";
+
+  }
+
+}
+
+
+/* ========================= */
+/* نسخ النص */
+/* ========================= */
+
+function copyText(text){
+
+  navigator.clipboard
+    .writeText(text)
+    .then(function(){
+
+      alert("تم النسخ بنجاح");
+
+    })
+    .catch(function(){
+
+      alert("تعذر النسخ، حاول مرة أخرى");
+
+    });
+
+}
+
+
+/* ========================= */
+/* نسخ الحقول */
+/* ========================= */
+
+function copyField(id){
+
+  const field =
+    document.getElementById(id);
+
+
+  if(!field.value){
+
+    alert("أدخل العنوان أولاً");
+
+    return;
+
+  }
+
+
+  copyText(field.value);
+
+}
+
+
+/* ========================= */
+/* إرسال طلب شراء عبر واتساب */
+/* ========================= */
+
+function sendBuyOrder(){
+
+  const amount =
+    document.getElementById("buyAmount").value;
+
+
+  const trc20 =
+    document.getElementById("buyTRC20").value;
+
+
+  const bep20 =
+    document.getElementById("buyBEP20").value;
+
+
+  if(!amount){
+
+    alert("أدخل كمية USDT أولاً");
+
+    return;
+
+  }
+
+
+  if(!selectedPayment){
+
+    alert("اختر طريقة الدفع أولاً");
+
+    return;
+
+  }
+
+
+  if(!trc20 && !bep20){
+
+    alert("أدخل عنوان TRC20 أو BEP20");
+
+    return;
+
+  }
+
+
+  let paymentName = "";
+
+
+  if(selectedPayment === "jawwal"){
+
+    paymentName = "جوال باي";
+
+  }
+
+
+  if(selectedPayment === "palpay"){
+
+    paymentName = "بال باي";
+
+  }
+
+
+  if(selectedPayment === "bank"){
+
+    paymentName = "بنك فلسطين";
+
+  }
+
+
+  const message =
+
+    "🛒 طلب شراء USDT" +
+
+    "\n\n" +
+
+    "كمية USDT: " + amount +
+
+    "\n" +
+
+    "طريقة الدفع: " + paymentName +
+
+    "\n\n" +
+
+    "عنوان TRC20:" +
+
+    "\n" +
+
+    (trc20 || "غير موجود") +
+
+    "\n\n" +
+
+    "عنوان BEP20:" +
+
+    "\n" +
+
+    (bep20 || "غير موجود") +
+
+    "\n\n" +
+
+    "📩 تم إرسال إشعار الدفع من الموقع.";
+
+
+  openWhatsApp(message);
+
+}
+
+
+/* ========================= */
+/* إرسال طلب بيع عبر واتساب */
+/* ========================= */
+
+function sendSellOrder(){
+
+  const amount =
+    document.getElementById("sellAmount").value;
+
+
+  const name =
+    document.getElementById("receiveName").value;
+
+
+  const number =
+    document.getElementById("receiveNumber").value;
+
+
+  if(!amount){
+
+    alert("أدخل كمية USDT أولاً");
+
+    return;
+
+  }
+
+
+  if(!selectedReceive){
+
+    alert("اختر طريقة الاستلام أولاً");
+
+    return;
+
+  }
+
+
+  if(!name || !number){
+
+    alert("أدخل اسم صاحب الحساب ورقم الحساب");
+
+    return;
+
+  }
+
+
+  let receiveName = "";
+
+
+  if(selectedReceive === "jawwal"){
+
+    receiveName = "جوال باي";
+
+  }
+
+
+  if(selectedReceive === "palpay"){
+
+    receiveName = "بال باي";
+
+  }
+
+
+  if(selectedReceive === "bank"){
+
+    receiveName = "بنك فلسطين";
+
+  }
+
+
+  const dollarAmount =
+    (Number(amount) * 0.95).toFixed(2);
+
+
+  const message =
+
+    "💵 طلب بيع USDT" +
+
+    "\n\n" +
+
+    "كمية USDT: " + amount +
+
+    "\n" +
+
+    "المبلغ المستحق: " +
+
+    dollarAmount +
+
+    " دولار" +
+
+    "\n\n" +
+
+    "طريقة الاستلام: " +
+
+    receiveName +
+
+    "\n" +
+
+    "اسم صاحب الحساب: " +
+
+    name +
+
+    "\n" +
+
+    "رقم الحساب / المحفظة: " +
+
+    number +
+
+    "\n\n" +
+
+    "📩 بانتظار تأكيد التحويل.";
+
+
+  openWhatsApp(message);
+
+}
+
+
+/* ========================= */
+/* فتح واتساب */
+/* ========================= */
+
+function openWhatsApp(message){
+
+  const url =
+
+    "https://wa.me/" +
+
+    whatsappNumber +
+
+    "?text=" +
+
+    encodeURIComponent(message);
+
+
+  window.open(url, "_blank");
+
+}
+
+</script>
 
 </body>
 
-</html>
+  </html>
