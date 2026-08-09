@@ -82,7 +82,13 @@ padding:40px;
 color:#ddd;
 font-size:15px;
 }
+.card[id]{
+  display:none;
+}
 
+.card[id]:target{
+  display:block;
+}
 </style>
 
 </head>
@@ -99,26 +105,45 @@ font-size:15px;
 
 <div class="container">
 
-  <a href="https://usdt-direct.netlify.app/sell.html" class="card">
-
-<div class="icon">💵</div>
-
-<h2>بيع USDT</h2>
-
-<p>أرسل USDT واستلم المبلغ المقابل مباشرة.</p>
-
-    <a href="https://usdt-direct.netlify.app/buy.html" class="card dark">
-
-<div class="icon">🛒</div>
-
-<h2>شراء USDT</h2>
-
-<p>ادفع واستلم USDT في محفظتك خلال دقائق.</p>
-
+  <a href="#sell" class="card">
+  <div class="icon">💵</div>
+  <h2>بيع USDT</h2>
+  <p>أرسل USDT واستلم المبلغ المقابل مباشرة.</p>
 </a>
+
+<a href="#buy" class="card dark">
+  <div class="icon">🛒</div>
+  <h2>شراء USDT</h2>
+  <p>ادفع واستلم USDT في محفظتك خلال دقائق.</p>
+  </a>
 
 </div>
 
+<div id="sell" class="card">
+  <h2>بيع USDT</h2>
+  <p>حدد الكمية وأدخل بيانات الحساب الذي تريد استلام المبلغ عليه.</p>
+
+  <label>كمية USDT</label>
+  <input type="number" placeholder="مثال: 100">
+
+  <label>معلومات الاستقبال</label>
+  <input type="text" placeholder="رقم المحفظة أو الحساب">
+
+  <button>مراجعة عملية البيع</button>
+</div>
+
+<div id="buy" class="card dark">
+  <h2>شراء USDT</h2>
+  <p>حدد الكمية وأدخل عنوان محفظة TRC20 الذي تريد الاستلام عليه.</p>
+
+  <label>كمية USDT</label>
+  <input type="number" placeholder="مثال: 100">
+
+  <label>عنوان محفظة TRC20</label>
+  <input type="text" placeholder="T...">
+
+  <button>مراجعة عملية الشراء</button>
+</div>
 <div class="footer">
 
 © 2026 Alataa USDT
